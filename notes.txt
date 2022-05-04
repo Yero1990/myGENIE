@@ -1,0 +1,69 @@
+
+Notes on work/setup of GENIE-MC/Generator
+
+Official Repo:
+https://github.com/GENIE-MC/Generator
+
+--- useful commands on fermilab screen ---
+source genie_env.sh  #this command is necessary at the beginning of each fermilab genie session to set up the env. variables
+screen -S  spline   (command that enables to put things in background)
+# after executing command
+screen -r  (bring process from background to current terminal)
+crtl+A+D (put process from current terminal to background)
+
+# command to know which tagged version of Genie Generator Im currently on
+git describe --tags
+
+
+http://www.genie-mc.org
+-------------------------------------------
+
+------------------------------------------------------
+Mar 07, 2022 (Meeting w/ Afro) + Homework Assignments
+------------------------------------------------------
+# process Im currently running on fermilab machines (in background) to 
+calculate (generate xml files) with cross sections (takes ~ 24 hrs)
+
+See: https://genie-docdb.pp.rl.ac.uk/cgi-bin/ShowDocument?docid=2
+for details of the commands below
+                                       
+>> gmkspl -p 11 -t 1000060120 -e 10 -o carbon12_spline_EMPlusMEC_G18_10a_02_11a.xml --tune G18_10a_02_11a --event-generator-list EM
+
+# after above process finishes, run the command below to generate 10 events from genie (as a test), 
+and them move on to generating more events (e.g. 10k, etc)
+
+>> gevgen -n 10 -p 11 -t 1000060120 -e 0.56  --event-generator-list EM --tune G18_10a_02_11a --cross-sections carbon12_spline_EMPlusMEC_G18_10a_02_11a.xml 
+
+# converts  GEHEP file to ROOT file
+# -f specifies the output format, where 'gst' is a GENIE summary ntuple format that can be used for plotting with ROOT
+# -i specifies the output file name
+
+>> gntpc -f gst -i gntp.0.ghep.root
+
+
+------------------------------------------
+May 04, 2022 (Slack Notes w/ Josh Barrow)
+------------------------------------------
+You need to convert the GENIE output files to a gst.root tree files with gntpc (see manual), and then hadd them all together into a single file for the LUND format scripts to run over
+
+Genie generates all kinematics and reaction types in its generation, unless you've specifically gone in and turned off certain generator
+modules within a given tune (not recommended for this kind of work, since you want everything, I think). Thus, hadd would be done for a
+given {target,energy,scattering probe}
+
+So, i generate electron events on hydrogen at 2 gev and i put all of those .gst.root files in directory and then hadd all of them with some kind of * flag
+you can similarly have all of the gst.root files in one directory, but as long as you've been careful with your -o (output flag) while doing gevgen or gntpc,
+you can similarly hadd only those files with particular naming conventions. Then I run a LUND file formatting on just one root file, give all those LUND files
+a consistent naming scheme, then run GEMC simulation on just those LUND files
+
+gst.root tree files are a proprietary file structure to GENIE. So will likely not work in that setup
+What Justin and Afro worked on and what I use/improved works (edited). When you're actually ready to start
+running those, feel free to talk to me or justin (if its after working hours here in israel), and we'll be happy
+to walk you through how gst, LUND, and GEMC interface on the ifarm (working hours to me is after around 8pm, and we're 7 hours ahead of ODU)
+
+To generate the .xml file for d(e, e'pi) and Ar(e, e'pi) on GENIE, use 100-250 knots for them; the more knots, the more "accuracy" (in terms of how the model is evaluated,
+saying nothing of the model itself), but it will take more time. The knots/bins are logarithmically spaced
+You can save time though by just running from (0.9,6.2) GeV or something (edited). Since you don't need any energies below or above that (unless you want them to be around
+for higher/lower energy running that may be possible)
+
+You probably do want points around 1GeV for the future 1 GeV run of CLAS12.
+I hear that may be in a year or so, but its not too harmful to go ahead and do. More knots in generally better
