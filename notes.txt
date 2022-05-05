@@ -6,17 +6,10 @@ https://github.com/GENIE-MC/Generator
 
 --- useful commands on fermilab screen ---
 source genie_env.sh  #this command is necessary at the beginning of each fermilab genie session to set up the env. variables
-
-useful screen commands,to run multiple processes on screen:
-
-screen -ls          # list all available screen splines ids, whether attached/detached
-# you can give a session a more descriptive name,. like screen -S deuteron_Eb10.6, or ar40_Eb5.8
-screen -S spline    # start a new screen session to work on (e.g. run a long 48-hr genie event generator, and put on background)
-cntl + A + D        # detach from the current spline, so the process runs on the background
-screen -r id.spline # bring process from background to current terminal
-screen -d id.spline # bring process from background to current terminal ( similar to cntrl+A+D)
-screen -X -S id.spline quit   # quit a session (id obtained from screen -ls command)
-
+screen -S  spline   (command that enables to put things in background)
+# after executing command
+screen -r  (bring process from background to current terminal)
+crtl+A+D (put process from current terminal to background)
 
 # command to know which tagged version of Genie Generator Im currently on
 git describe --tags
