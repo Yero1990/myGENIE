@@ -65,5 +65,36 @@ saying nothing of the model itself), but it will take more time. The knots/bins 
 You can save time though by just running from (0.9,6.2) GeV or something (edited). Since you don't need any energies below or above that (unless you want them to be around
 for higher/lower energy running that may be possible)
 
-You probably do want points around 1GeV for the future 1 GeV run of CLAS12.
+You probably do want points around 1 GeV for the future 1 GeV run of CLAS12.
 I hear that may be in a year or so, but its not too harmful to go ahead and do. More knots in generally better
+
+------------------------------
+May 05, 2022 (Meeting w/ Josh
+------------------------------
+
+After generating the .xml splines (numerical cross sections), rather than
+generating the events (gevgen) on the terminal, which can take days, it is
+recommended to generate them on a grid.
+
+Here is a recorded meeting, where this is explained:
+https://www.dropbox.com/s/mgr12mzo9o3vd8k/video1240337360.mp4?dl=0
+
+And the relevant files can be found here:
+/genie/app/users/apapadop/GridJobs
+
+
+After generating the GENIE ghep.root and converting to gst.root files,
+Josh can run a code on these gst.root files to convert them to LUND format
+for CLAS12 GEMC simulation.
+
+** One of the unresolved problems is that, when GENIE (truth) is passed
+thru CLAS12 GEMC (event thrown to CLAS12 detectors), it is NOT clear how to
+recover the the initial GENIE truth values (px, py, pz, p) from the thrown CLAS12 events.
+Are these initial values that are thrown to the CLAS12 acceptance revoverable or stored somewhere?
+Or would we have to find a way to store these initial values
+
+It is expected that the thrown GENIE events will get smeared when passing thru the CLAS12
+detectors, therefor, if one can take the difference between the GENIE truth values (thrown at the vertex)
+and the reconstructed values from CLAS12, one may be able to quantify the smearing of these events which is not
+yet clear if they are due to CLAS12 reconstruction resolution (or genie mis-modeling)
+** Need to ask Larry if for pion transparency we would need to know these effects.
