@@ -8,9 +8,10 @@ https://github.com/GENIE-MC/Generator
 source genie_env.sh  #this command is necessary at the beginning of each fermilab genie session to set up the env. variables
 screen -S  spline   (command that enables to put things in background)
 # after executing command
-screen -r  (bring process from background to current terminal)
+screen -r id.spline (bring process from background to current terminal)
 crtl+A+D (put process from current terminal to background)
-
+screen -ls # list splines
+screen -S id.spline -X quit # quit spline process
 # command to know which tagged version of Genie Generator Im currently on
 git describe --tags
 
