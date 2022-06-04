@@ -1,0 +1,42 @@
+# put this in fermilab to faciliate sourcing for work on grid
+source gotogenie.sh
+-----------------------
+cd /genie/app/users/jbarrow/genie-v3/
+source genie_env.sh
+source /cvmfs/fermilab.opensciencegrid.org/products/common/etc/setup
+setup fife_utils
+cd Generator/
+------------------------
+
+Grid Jobs
+(to submit genie event generator from .xml and generate root files)
+1) make my own dir
+/pnfs/genie/persistent/users/cyero/Grid/
+
+
+>> submit_samples.sh
+./submit_samples.sh 10 apapadop_G21_11a_1000060120_2261 /pnfs/genie/persistent/users/apapadop/mySplines/master/v3_2/11_1000060120_EM_GEM21_11b_00_000.xml /pnfs/genie/scratch/users/apapadop/Playground/Justin_Q2_0_02/ origin/master 2.261 11 1000060120 GEM21_11a_00_000 EM
+>> genie_sample_grid.sh
+
+# the two script above need to be in two places, for grid submit to work properly:
+  -> /genie/app/users/cyero/myGENIE/simulation/GridJobs
+  -> /pnfs/genie/persistent/users/cyero/Grid/
+
+** edit my scripts on /app and copy to /persistent (or symbolic link them)
+** run the scripts from either /app or /persistent
+** all outputs must go to /scratch
+
+fermilab scicomp
+https://fifemon.fnal.gov/monitor/d/000000185/fifemon-home?orgId=1
+
+jobsub_q --help
+
+
+# re-combine root files
+hadd /pnfs/genie/scratch/users/jbarrow/e4nu/RGM/Argon40_2p1GeV_HighlyRad/Argon40_2p1GeV_HighlyRad.root $(find /pnfs/genie/scratch/users/apapadop/Playground/Justin_Q2_0_02/Ar_2_1GeV_HighlyRad -name "*.gst.root")
+
+# move it to jlab resources
+scp -o "ProxyJump jbarrow@login.jlab.org" -r /pnfs/genie/scratch/users/jbarrow/e4nu/RGM/Calcium40_6GeV_HighlyRad/Calcium40_6GeV_HighlyRad.root jbarrow@ifarm1802.jlab.org:/lustre19/expphy/volatile/clas12/users/jbarrow/Simulation/rootfiles/.
+
+
+e.g.,  if I replay 20,000000 (20 million) events, can break it up into 100k events (i.e., 200 job submissions)
