@@ -36,11 +36,13 @@ setup pdfsets v5_9_1b
 setup gdb v8_1
 setup git v2_15_1
 
+# C.Y. if Generator/ repo exists, this command is NOT needed
 #git clone https://github.com/GENIE-MC/Generator.git genie-build
-git clone https://github.com/afropapp13/Generator.git genie-build
+#git clone https://github.com/afropapp13/Generator.git genie-build
+#git clone https://github.com/Yero1990/Generator.git Generator
 
 export GENIEBASE=$(pwd)
-export GENIE=$GENIEBASE/genie-build
+export GENIE=$GENIEBASE/Generator
 export PYTHIA6=$PYTHIA_FQ_DIR/lib
 export LHAPDF5_INC=$LHAPDF_INC
 export LHAPDF5_LIB=$LHAPDF_LIB

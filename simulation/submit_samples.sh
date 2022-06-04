@@ -88,7 +88,7 @@ echo TARGET ${TARGET}
 echo TUNE ${TUNE} 
 echo EVENTGENLIST ${EVENTGENLIST}
 
-GRID_RESOURCES_DIR=/pnfs/genie/persistent/users/apapadop/Grid/
+GRID_RESOURCES_DIR=/pnfs/genie/persistent/users/cyero/Grid/
 
 # Check if the USE_PRODUCTION variable is set
 if [ ! -z ${USE_PRODUCTION+x} ]; then

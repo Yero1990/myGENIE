@@ -16,6 +16,9 @@ Grid Jobs
 
 >> submit_samples.sh
 ./submit_samples.sh 10 apapadop_G21_11a_1000060120_2261 /pnfs/genie/persistent/users/apapadop/mySplines/master/v3_2/11_1000060120_EM_GEM21_11b_00_000.xml /pnfs/genie/scratch/users/apapadop/Playground/Justin_Q2_0_02/ origin/master 2.261 11 1000060120 GEM21_11a_00_000 EM
+
+./submit_samples.sh NUM_JOBS JOB_NAME SPLINES_FILE OUTPUT_DIRECTORY GIT_CHECKOUT ENERGY PROBE TARGET TUNE EVENTGENLIST
+
 >> genie_sample_grid.sh
 
 # the two script above need to be in two places, for grid submit to work properly:
@@ -40,3 +43,9 @@ scp -o "ProxyJump jbarrow@login.jlab.org" -r /pnfs/genie/scratch/users/jbarrow/e
 
 
 e.g.,  if I replay 20,000000 (20 million) events, can break it up into 100k events (i.e., 200 job submissions)
+
+
+
+#--------------------- MY 1ST TRY AT GRID JOB SUBMISSION --------------
+
+./submit_samples.sh 5 cyero_G18_10a_02_11a /pnfs/genie/persistent/users/cyero/splines/d2_spline_G18_10a_02_11a.xml /pnfs/genie/scratch/users/cyero/events/ origin/master 5.98636 11 1000010020 G18_10a_02_11a EM
