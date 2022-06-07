@@ -46,7 +46,7 @@ setup git v2_15_1
 # C.Y. if Generator/ repo exists, this command is NOT needed
 #git clone https://github.com/GENIE-MC/Generator.git genie-build
 #git clone https://github.com/afropapp13/Generator.git genie-build
-git clone https://github.com/Yero1990/Generator.git Generator
+#git clone https://github.com/Yero1990/Generator.git Generator
 
 export GENIEBASE=$(pwd)
 export GENIE=$GENIEBASE/Generator
@@ -99,7 +99,7 @@ echo EVENTGENLIST ${EVENTGENLIST}
 cd ${CONDOR_DIR_INPUT}
 printf -v PADDED_PROCESS "%05d" $EVENTGENLIST
 output_file_stem="${CONDOR_DIR_OUTPUT}/${STEM}_${myseed}_${PADDED_PROCESS}"
-gevgen -n 1000000 -e ${ENERGY} -p ${PROBE} -t ${TARGET} --tune ${TUNE} --event-generator-list ${EVENTGENLIST} --seed ${myseed} --cross-sections ${SPLINES_FILE} -o ${output_file_stem}.ghep.root
+gevgen -n 100000 -e ${ENERGY} -p ${PROBE} -t ${TARGET} --tune ${TUNE} --event-generator-list ${EVENTGENLIST} --seed ${myseed} --cross-sections ${SPLINES_FILE} -o ${output_file_stem}.ghep.root
 
 # Make a gst-format summary file for easy plotting
 gntpc -i ${output_file_stem}.ghep.root -o ${output_file_stem}.gst.root -f gst

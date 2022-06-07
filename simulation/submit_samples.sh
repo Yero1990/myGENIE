@@ -88,7 +88,7 @@ echo TARGET ${TARGET}
 echo TUNE ${TUNE} 
 echo EVENTGENLIST ${EVENTGENLIST}
 
-GRID_RESOURCES_DIR=/pnfs/genie/persistent/users/cyero/Grid/
+GRID_RESOURCES_DIR=/pnfs/genie/persistent/users/cyero/Grid
 
 # Check if the USE_PRODUCTION variable is set
 if [ ! -z ${USE_PRODUCTION+x} ]; then
@@ -105,7 +105,7 @@ fi
 SourceSetup
 setup fife_utils
 
-jobsub_submit -G genie --disk=20GB --expected-lifetime=24h -N $NUM_JOBS \
+jobsub_submit -G genie --disk=5GB --expected-lifetime=24h -N $NUM_JOBS \
   $PROD_OPTION -f $SPLINES_FILE -d OUTPUT $OUTPUT_DIRECTORY \
   --resource-provides=usage_model=DEDICATED,OPPORTUNISTIC,OFFSITE \
   file://$GRID_RESOURCES_DIR/genie_samples_grid.sh $STEM $(basename $SPLINES_FILE) ${GIT_CHECKOUT} ${ENERGY} ${PROBE} ${TARGET} ${TUNE} ${EVENTGENLIST}

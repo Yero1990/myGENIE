@@ -48,4 +48,6 @@ e.g.,  if I replay 20,000000 (20 million) events, can break it up into 100k even
 
 #--------------------- MY 1ST TRY AT GRID JOB SUBMISSION --------------
 
-./submit_samples.sh 5 cyero_G18_10a_02_11a /pnfs/genie/persistent/users/cyero/splines/d2_spline_G18_10a_02_11a.xml /pnfs/genie/scratch/users/cyero/events/ origin/master 5.98636 11 1000010020 G18_10a_02_11a EM
+./submit_samples.sh 10 cyero_G18_10a_02_11a /pnfs/genie/persistent/users/cyero/splines/d2_spline_G18_10a_02_11a.xml /pnfs/genie/scratch/users/cyero/events/ origin/master 5.98636 11 1000010020 G18_10a_02_11a EM
+
+./genie_samples_grid.sh cyero_G18_10a_02_11a /pnfs/genie/persistent/users/cyero/splines/d2_spline_G18_10a_02_11a.xml origin/master 5.98636 11 1000010020 G18_10a_02_11a EM
