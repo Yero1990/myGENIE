@@ -38,5 +38,8 @@ hadd /pnfs/genie/scratch/users/jbarrow/e4nu/RGM/Argon40_2p1GeV_HighlyRad/Argon40
 # move it to jlab resources
 scp -o "ProxyJump jbarrow@login.jlab.org" -r /pnfs/genie/scratch/users/jbarrow/e4nu/RGM/Calcium40_6GeV_HighlyRad/Calcium40_6GeV_HighlyRad.root jbarrow@ifarm1802.jlab.org:/lustre19/expphy/volatile/clas12/users/jbarrow/Simulation/rootfiles/.
 
+or
+
+scp filename.root 'cyero@ftp.jlab.org:/lustre19/expphy/volatile/clas12/users/cyero/simulations/ROOTfiles/'
 
 e.g.,  if I replay 20,000000 (20 million) events, can break it up into 100k events (i.e., 200 job submissions)
