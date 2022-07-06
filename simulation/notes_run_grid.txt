@@ -48,6 +48,11 @@ e.g.,  if I replay 20,000000 (20 million) events, can break it up into 100k even
 
 #--------------------- MY 1ST TRY AT GRID JOB SUBMISSION --------------
 
-./submit_samples.sh 10 cyero_G18_10a_02_11a /pnfs/genie/persistent/users/cyero/splines/d2_spline_G18_10a_02_11a.xml /pnfs/genie/scratch/users/cyero/events/ origin/master 5.98636 11 1000010020 G18_10a_02_11a EM
+# PLEASE look into the submit_samples.sh script for more information on the user command-line inputs shown below.
+# the 'submit_samples.sh' script calls a second script, 'genie_samples_grid.sh', where the user can specify by hand (open file and change number) the number of events to be generated per JOB
+# at some point I will have to add this as a user command line option to simplify this process.
+#./submit_samples.sh <NUM_JOBS> <STEM> <SPLINES_FILE> <OUTPUT_DIRECTORY> <GIT_CHECKOUT> <ENERGY> <PROBE> <TARGET> <TUNE> <EVENTGENLIST>         
+./submit_samples.sh 11 cyero_G18_10a_02_11a /pnfs/genie/persistent/users/cyero/splines/d2_spline_G18_10a_02_11a.xml /pnfs/genie/scratch/users/cyero/events/ origin/master 5.98636 11 1000010020 G18_10a_02_11a EM
+
 
 ./genie_samples_grid.sh cyero_G18_10a_02_11a /pnfs/genie/persistent/users/cyero/splines/d2_spline_G18_10a_02_11a.xml origin/master 5.98636 11 1000010020 G18_10a_02_11a EM

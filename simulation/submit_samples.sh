@@ -105,7 +105,7 @@ fi
 SourceSetup
 setup fife_utils
 
-jobsub_submit -G genie --disk=5GB --expected-lifetime=24h -N $NUM_JOBS \
+jobsub_submit -G genie --memory=1GB --disk=10GB --expected-lifetime=72h -N $NUM_JOBS \
   $PROD_OPTION -f $SPLINES_FILE -d OUTPUT $OUTPUT_DIRECTORY \
   --resource-provides=usage_model=DEDICATED,OPPORTUNISTIC,OFFSITE \
   file://$GRID_RESOURCES_DIR/genie_samples_grid.sh $STEM $(basename $SPLINES_FILE) ${GIT_CHECKOUT} ${ENERGY} ${PROBE} ${TARGET} ${TUNE} ${EVENTGENLIST}
