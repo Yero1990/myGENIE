@@ -1,0 +1,16 @@
+Caleb will copy all relevant script to here:
+/scratch/cfogler/e4nu/Simulation/
+
+convert *.gst.root to lund format in ifarm
+
+
+1) source environment.csh
+
+2) Use LUND_fromGenie_C.C to convert .gst to .dat (lund file format)
+ there will be many lund files generated and written to output
+
+3) cd submit/6gev, and run: submit_recon_6gev_D.sh (for example, for deuteron)
+this shell  script converts calls multiple commands, whihc ultimately converts to .hipo file
+sbatch submit_recon_6gev_D.sh,  to submit job (maybe slurm?)
+
+to check run status of job submission: squeue -u cyero
