@@ -1,11 +1,12 @@
 # put this in fermilab to faciliate sourcing for work on grid
 source gotogenie.sh
 -----------------------
-cd /genie/app/users/jbarrow/genie-v3/
+cd  /genie/app/users/cyero/myGENIE/simulation/
 source genie_env.sh
 source /cvmfs/fermilab.opensciencegrid.org/products/common/etc/setup
 setup fife_utils
 cd Generator/
+
 ------------------------
 
 Grid Jobs
