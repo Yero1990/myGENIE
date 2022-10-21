@@ -116,7 +116,7 @@ fi
 # Since RGM highest beam energy was 5.98 GeV,  I would think setting an upper limit of: ~ 6 GeV will be OK, or is it better to go up to 11 GeV )??
 
 
-# generate pion electro production off deuterium: d(e,e'pi)  with incident e- beam energy of 5.98
+# generate pion electro production off deuterium: d(e,e')  with incident e- beam energy of 5.98
 cmd_xml="gmkspl -p ${beam_pdg} -n 250 -t ${tgt_pdg} -e ${Eb_max} -o ${splines_out}.xml --tune ${tune} --event-generator-list EM"
 echo "Executing ----> ${cmd_xml}"
 echo "Writing splines file to ---> "$splines_out
